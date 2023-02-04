@@ -10,6 +10,10 @@ Please check if your PR fulfkills the following requeriments:
 - [ ] Lint, SonarLint and Ktlint has passed locally
 
 # Type of change
+- [ ] Epic
+- [ ] Feature
+- [ ] Task
+- [ ] Refactor
 
 # Extra
 - [ ] Unit tests added
