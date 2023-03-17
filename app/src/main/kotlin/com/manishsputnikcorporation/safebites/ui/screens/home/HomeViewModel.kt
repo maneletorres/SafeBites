@@ -24,6 +24,7 @@ class HomeViewModel @Inject constructor(): ViewModel() {
         }
     }
 
+    // region State & Events
     sealed interface HomeUiState {
         object Idle : HomeUiState
         object Loading : HomeUiState
@@ -33,4 +34,5 @@ class HomeViewModel @Inject constructor(): ViewModel() {
     sealed interface Event {
         data class Error(val errorMessage: String) : Event
     }
+    // endregion
 }
