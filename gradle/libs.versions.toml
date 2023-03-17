@@ -63,11 +63,11 @@ compose = [
     "androidx-compose-ui-tooling",
 ]
 unit-testing = [
+    "io-mockk",
     "junit",
     "kotlinx-coroutines-test",
-    "turbine",
     "mockito",
-    "io-mockk"
+    "turbine",
 ]
 
 [plugins]
