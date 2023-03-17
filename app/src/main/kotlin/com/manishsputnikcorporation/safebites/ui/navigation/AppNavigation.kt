@@ -2,6 +2,7 @@ package com.manishsputnikcorporation.safebites.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,7 +15,7 @@ fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifie
         navController = navController, startDestination = Home.route, modifier = modifier
     ) {
         composable(route = Home.route) {
-            HomeScreen() { productId ->
+            HomeScreen(homeViewModel = hiltViewModel()) { productId ->
                 navController.navigateSingleTopTo("toDo")
             }
         }
