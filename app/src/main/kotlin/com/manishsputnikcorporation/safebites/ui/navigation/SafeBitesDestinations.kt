@@ -7,6 +7,9 @@ interface SafeBitesDestinations {
 }
 
 /** SafeBites app navigation destinations */
+object SplashScreen : SafeBitesDestinations {
+  override val route: String = "splash_screen"
+}
 object Home : SafeBitesDestinations {
   override val route: String = "home"
 }
