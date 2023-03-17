@@ -7,3 +7,6 @@ interface SafeBitesDestinations {
 }
 
 /** SafeBites app navigation destinations */
+object Home : SafeBitesDestinations {
+    override val route: String = "home"
+}

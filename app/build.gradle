@@ -60,6 +60,10 @@ dependencies {
     kapt libs.dagger.hilt.android.compiler
     // endregion
 
+    implementation libs.bundles.ui
     implementation libs.bundles.navigation
     implementation libs.bundles.compose
+
+    // region Testing libraries:
+    testImplementation libs.bundles.unit.testing
 }
