@@ -5,14 +5,18 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.manishsputnikcorporation.safebites.ui.screens.home.HomeScreen
+import com.manishsputnikcorporation.safebites.ui.utils.extensions.navigateSingleTopTo
 
 @Composable
 fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(
-        navController = navController, startDestination = "toDo", modifier = modifier
+        navController = navController, startDestination = Home.route, modifier = modifier
     ) {
-        composable(route = "toDO") {
-            // TODO:
+        composable(route = Home.route) {
+            HomeScreen() { productId ->
+                navController.navigateSingleTopTo("toDo")
+            }
         }
     }
 }
