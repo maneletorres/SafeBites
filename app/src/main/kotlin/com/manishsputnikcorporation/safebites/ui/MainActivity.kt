@@ -1,4 +1,4 @@
-package com.manishsputnikcorporation.safebites
+package com.manishsputnikcorporation.safebites.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,34 +10,24 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.manishsputnikcorporation.safebites.ui.navigation.AppNavigation
 import com.manishsputnikcorporation.safebites.ui.theme.SafeBitesTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            SafeBitesTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
-            }
-        }
+        setContent { SafeBitesApp() }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
+fun SafeBitesApp() {
     SafeBitesTheme {
-        Greeting("Android")
+        val navController = rememberNavController()
+        AppNavigation(navController)
     }
 }
