@@ -11,13 +11,11 @@ import com.manishsputnikcorporation.safebites.ui.utils.extensions.navigateSingle
 
 @Composable
 fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifier) {
-    NavHost(
-        navController = navController, startDestination = Home.route, modifier = modifier
-    ) {
-        composable(route = Home.route) {
-            HomeScreen(homeViewModel = hiltViewModel()) { productId ->
-                navController.navigateSingleTopTo("toDo")
-            }
-        }
+  NavHost(navController = navController, startDestination = Home.route, modifier = modifier) {
+    composable(route = Home.route) {
+      HomeScreen(homeViewModel = hiltViewModel()) { productId ->
+        navController.navigateSingleTopTo("toDo")
+      }
     }
+  }
 }

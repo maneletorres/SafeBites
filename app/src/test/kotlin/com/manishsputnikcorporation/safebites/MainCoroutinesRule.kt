@@ -10,16 +10,16 @@ import org.junit.runners.model.Statement
 @OptIn(ExperimentalCoroutinesApi::class)
 class MainCoroutinesRule : TestRule {
 
-    private val testCoroutineDispatcher = StandardTestDispatcher()
+  private val testCoroutineDispatcher = StandardTestDispatcher()
 
-    override fun apply(base: Statement, description: Description): Statement =
-        object : Statement() {
-            override fun evaluate() {
-                Dispatchers.setMain(testCoroutineDispatcher)
-                base.evaluate()
-                Dispatchers.resetMain()
-            }
+  override fun apply(base: Statement, description: Description): Statement =
+      object : Statement() {
+        override fun evaluate() {
+          Dispatchers.setMain(testCoroutineDispatcher)
+          base.evaluate()
+          Dispatchers.resetMain()
         }
+      }
 
-    fun runTest(block: suspend TestScope.() -> Unit) = TestScope().runTest(testBody = block)
+  fun runTest(block: suspend TestScope.() -> Unit) = TestScope().runTest(testBody = block)
 }
