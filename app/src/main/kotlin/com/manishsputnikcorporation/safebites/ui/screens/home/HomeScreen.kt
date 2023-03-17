@@ -6,10 +6,13 @@ import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
+import com.manishsputnikcorporation.safebites.ui.screens.home.HomeViewModel.HomeUiState.*
+import com.manishsputnikcorporation.safebites.ui.screens.home.HomeViewModel.Event.Error
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -23,14 +26,40 @@ import com.manishsputnikcorporation.safebites.ui.screens.generic.GenericPlacehol
 import com.manishsputnikcorporation.safebites.ui.theme.SafeBitesTheme
 import com.manishsputnikcorporation.safebites.ui.utils.annotations.UiModePreviews
 import com.manishsputnikcorporation.safebites.ui.utils.fake.fakeProducts
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
 fun HomeScreen(
+    homeViewModel: HomeViewModel,
     onProductClick: (String) -> Unit = {}
 ) {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
-    HomeContent(scaffoldState = scaffoldState, products = fakeProducts)
+    val homeUiState by homeViewModel.productsHomeUiState.collectAsState()
+    homeUiState.let {
+        when (it) {
+            Idle -> homeViewModel.loadData()
+            Loading -> GenericLoading()
+            is Data -> HomeContent(
+                scaffoldState = scaffoldState,
+                products = it.products,
+                onProductClick = { productId -> onProductClick(productId) }
+            )
+        }
+    }
+
+    val context = LocalContext.current
+    LaunchedEffect(Unit) {
+        homeViewModel.event.collectLatest { event ->
+            when (event) {
+                is Error -> scaffoldState.snackbarHostState.showSnackbar(
+                    message = "", // TODO:
+                    actionLabel = "", // TODO:
+                    duration = SnackbarDuration.Long
+                )
+            }
+        }
+    }
 }
 
 @Composable
