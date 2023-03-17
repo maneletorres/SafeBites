@@ -10,6 +10,7 @@ interface SafeBitesDestinations {
 object SplashScreen : SafeBitesDestinations {
   override val route: String = "splash_screen"
 }
+
 object Home : SafeBitesDestinations {
   override val route: String = "home"
 }

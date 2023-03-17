@@ -14,12 +14,12 @@ import com.manishsputnikcorporation.safebites.ui.utils.extensions.navigateSingle
 fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifier) {
   NavHost(navController = navController, startDestination = Home.route, modifier = modifier) {
     composable(route = SplashScreen.route) {
-        SplashScreen {
-          navController.apply {
-            popBackStack()
-            navigateSingleTopTo(Home.route)
-          }
+      SplashScreen {
+        navController.apply {
+          popBackStack()
+          navigateSingleTopTo(Home.route)
         }
+      }
     }
     composable(route = Home.route) {
       HomeScreen(homeViewModel = hiltViewModel()) { productId ->
