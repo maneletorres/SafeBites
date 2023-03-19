@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.manishsputnikcorporation.safebites.R
+import com.manishsputnikcorporation.safebites.domain.model.ProductModel
 import com.manishsputnikcorporation.safebites.ui.screens.generic.EmptyContent
 import com.manishsputnikcorporation.safebites.ui.screens.generic.GenericLoading
 import com.manishsputnikcorporation.safebites.ui.screens.generic.GenericPlaceholder
@@ -25,7 +26,8 @@ import com.manishsputnikcorporation.safebites.ui.screens.home.HomeViewModel.Even
 import com.manishsputnikcorporation.safebites.ui.screens.home.HomeViewModel.HomeUiState.*
 import com.manishsputnikcorporation.safebites.ui.theme.SafeBitesTheme
 import com.manishsputnikcorporation.safebites.ui.utils.annotations.UiModePreviews
-import com.manishsputnikcorporation.safebites.ui.utils.fake.fakeProducts
+import com.manishsputnikcorporation.safebites.ui.utils.extensions.handleEventError
+import com.manishsputnikcorporation.safebites.utils.fakeProductModelList
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -45,15 +47,16 @@ fun HomeScreen(homeViewModel: HomeViewModel, onProductClick: (String) -> Unit = 
     }
   }
 
-  val context = LocalContext.current
+  val resources = LocalContext.current.resources
   LaunchedEffect(Unit) {
     homeViewModel.event.collectLatest { event ->
       when (event) {
         is Error ->
-            scaffoldState.snackbarHostState.showSnackbar(
-                message = "", // TODO:
-                actionLabel = "", // TODO:
-                duration = SnackbarDuration.Long)
+            scaffoldState.handleEventError(
+                tag = "HomeScreen",
+                internalErrorMessage = event.errorMessage,
+                friendlyErrorMessage = resources.getString(R.string.products_home_error),
+                actionLabel = resources.getString(R.string.generic_close_message))
       }
     }
   }
@@ -62,7 +65,7 @@ fun HomeScreen(homeViewModel: HomeViewModel, onProductClick: (String) -> Unit = 
 @Composable
 fun HomeContent(
     scaffoldState: ScaffoldState,
-    products: List<String>, // TODO: to transform to Product object.
+    products: List<ProductModel>,
     modifier: Modifier = Modifier,
     onProductClick: (String) -> Unit = {}
 ) {
@@ -97,7 +100,7 @@ fun HomeContent(
                 modifier.padding(contentPadding).semantics {
                   contentDescription = "SafeBites Home Screen" // TODO:
                 }) {
-              if (products.isEmpty()) EmptyContent(message = 0) // TODO:
+              if (products.isEmpty()) EmptyContent(message = R.string.generic_error_message)
               else
                   ProductsGrid(products, gridState = gridState) { productId ->
                     onProductClick(productId)
@@ -108,15 +111,15 @@ fun HomeContent(
 
 @Composable
 fun ProductsGrid(
-    products: List<String>,
+    products: List<ProductModel>,
     modifier: Modifier = Modifier,
     gridState: LazyGridState = rememberLazyGridState(),
     onProductClick: (String) -> Unit = {}
 ) {
   LazyVerticalGrid(columns = GridCells.Fixed(3), modifier = modifier, state = gridState) {
-    items(products, key = { it }) { product ->
-      val rememberProduct = rememberSaveable { product }
-      Product(rememberProduct, "") { productId -> onProductClick(productId) }
+    items(products, key = { it.id }) { product ->
+      val rememberProduct = rememberSaveable { product } // TODO: to check
+      with(rememberProduct) { Product(id, imageUrl) { productId -> onProductClick(productId) } }
     }
   }
 }
@@ -143,19 +146,19 @@ fun Product(id: String, image: String, onProductClick: (String) -> Unit = {}) {
 fun HomeContentPreview() {
   SafeBitesTheme {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
-    HomeContent(scaffoldState, fakeProducts)
+    HomeContent(scaffoldState, fakeProductModelList)
   }
 }
 
 @UiModePreviews
 @Composable
 fun ProductsGridPreview() {
-  SafeBitesTheme { Surface { ProductsGrid(products = fakeProducts) } }
+  SafeBitesTheme { Surface { ProductsGrid(products = fakeProductModelList) } }
 }
 
 @UiModePreviews
 @Composable
 fun ProductPreview() {
-  SafeBitesTheme { Surface { Product(fakeProducts.first(), "") } }
+  SafeBitesTheme { Surface { with(fakeProductModelList.first()) { Product(id, name) } } }
 }
 // endregion

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SafeBites</string>
+    <string name="logo_description">SafeBites</string>
+    <string name="welcome_message">Welcome to SafeBites</string>
+
+    <!-- Generic: -->
+    <string name="generic_error_message">This is a generic error message.</string>
+    <string name="generic_close_message">Close</string>
+
+    <!-- Home screen: -->
+    <string name="products_home_error">There was a problem loading the product list. Sorry for the inconvenience.</string>
 </resources>
