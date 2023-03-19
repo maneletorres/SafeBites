@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import com.manishsputnikcorporation.safebites.ui.screens.home.HomeScreen
 import com.manishsputnikcorporation.safebites.ui.screens.splash.SplashScreen
 import com.manishsputnikcorporation.safebites.ui.utils.extensions.navigateSingleTopTo
+import timber.log.Timber
 
 @Composable
 fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifier) {
@@ -23,7 +24,8 @@ fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifie
     }
     composable(route = Home.route) {
       HomeScreen(homeViewModel = hiltViewModel()) { productId ->
-        navController.navigateSingleTopTo("toDo")
+        Timber.tag("SafeBites").d("Product ID: $productId")
+        // navController.navigateSingleTopTo("goToProductDetail") // TODO:
       }
     }
   }
