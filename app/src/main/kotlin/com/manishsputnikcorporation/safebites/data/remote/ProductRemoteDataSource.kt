@@ -7,7 +7,7 @@ import com.manishsputnikcorporation.safebites.network.CustomServicesExecutor
 import com.manishsputnikcorporation.safebites.network.ProductsService
 import com.manishsputnikcorporation.safebites.network.response.ProductsDto
 import com.manishsputnikcorporation.safebites.network.utils.Either
-import com.manishsputnikcorporation.safebites.utils.mapSuccess
+import com.manishsputnikcorporation.safebites.utils.extensions.mapSuccess
 import javax.inject.Inject
 import retrofit2.Call
 

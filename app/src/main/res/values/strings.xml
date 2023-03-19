@@ -2,4 +2,8 @@
     <string name="app_name">SafeBites</string>
     <string name="logo_description">SafeBites</string>
     <string name="welcome_message">Welcome to SafeBites</string>
+
+    <!-- Home screen: -->
+    <string name="products_home_error">There was a problem loading the product list. Sorry for the inconvenience.</string>
+    <string name="generic_close_message">Close</string>
 </resources>

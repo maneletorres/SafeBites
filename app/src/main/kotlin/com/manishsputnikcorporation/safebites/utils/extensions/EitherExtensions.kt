@@ -1,4 +1,4 @@
-package com.manishsputnikcorporation.safebites.utils
+package com.manishsputnikcorporation.safebites.utils.extensions
 
 import com.manishsputnikcorporation.safebites.network.utils.Either
 import kotlin.contracts.ExperimentalContracts
