@@ -6,8 +6,8 @@ import com.manishsputnikcorporation.safebites.domain.error.SafeFlowUseCaseDelega
 import com.manishsputnikcorporation.safebites.domain.usecase.home.LoadProductsUseCase
 import com.manishsputnikcorporation.safebites.ui.screens.home.HomeViewModel.Event.*
 import com.manishsputnikcorporation.safebites.ui.screens.home.HomeViewModel.HomeUiState.*
-import com.manishsputnikcorporation.safebites.utils.fakeProductModelList
 import com.manishsputnikcorporation.safebites.utils.fakeFlowDomainError
+import com.manishsputnikcorporation.safebites.utils.fakeProductModelList
 import com.manishsputnikcorporation.safebites.utils.getDomainProductList
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
