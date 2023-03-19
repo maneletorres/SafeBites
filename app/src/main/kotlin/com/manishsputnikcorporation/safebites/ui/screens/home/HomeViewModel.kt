@@ -33,7 +33,10 @@ constructor(
         .onStart { _productsHomeUiState.update { Loading } }
         .onEach {
           it.onSuccess { products -> _productsHomeUiState.update { Data(products) } }
-              .onFailure { error -> _event.send(Event.Error(error.message)) }
+              .onFailure { error ->
+                _productsHomeUiState.update { Data(emptyList()) }
+                _event.send(Event.Error(error.message))
+              }
         }
         .launchIn(viewModelScope)
   }

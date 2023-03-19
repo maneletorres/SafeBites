@@ -100,7 +100,7 @@ fun HomeContent(
                 modifier.padding(contentPadding).semantics {
                   contentDescription = "SafeBites Home Screen" // TODO:
                 }) {
-              if (products.isEmpty()) EmptyContent(message = 0) // TODO:
+              if (products.isEmpty()) EmptyContent(message = R.string.generic_error_message)
               else
                   ProductsGrid(products, gridState = gridState) { productId ->
                     onProductClick(productId)
