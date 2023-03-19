@@ -1,5 +1,8 @@
 [versions]
 google-dagger-version = "2.45"
+timber-version = "5.0.1"
+retrofit2-version = "2.9.0"
+okhttp3-version = "4.10.0"
 coil-kt-version = "2.2.2"
 adapter-delegates4-version = "4.3.2"
 navigation-ui-ktx-version = "2.5.3"
@@ -22,6 +25,19 @@ androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:na
 # Dependency injection (DI) libraries:
 dagger-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "google-dagger-version" }
 dagger-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "google-dagger-version" }
+
+# Timber libraries:
+com-jakewharton-timber = { module = "com.jakewharton.timber:timber", version.ref = "timber-version" }
+
+# Retrofit libraries:
+com-squareup-retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit2-version" }
+com-squareup-retrofit2-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit2-version" }
+
+# OkHttp libraries:
+com-squareup-okhttp3-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3-version" }
+com-squareup-okhttp3-okhttp-urlconnection = { module = "com.squareup.okhttp3:okhttp-urlconnection", version.ref = "okhttp3-version" }
+com-squareup-okhttp3-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp3-version" }
+com-squareup-okhttp3-mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp3-version" }
 
 # UI libraries:
 io-coil-kt-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-kt-version" }
@@ -50,6 +66,15 @@ mockito = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito
 io-mockk = { module = "io.mockk:mockk", version.ref = "io-mockk-version" }
 
 [bundles]
+retrofit2 = [
+    "com-squareup-retrofit2-converter-moshi",
+    "com-squareup-retrofit2-retrofit",
+]
+okhttp3 = [
+    "com-squareup-okhttp3-logging-interceptor",
+    "com-squareup-okhttp3-okhttp",
+    "com-squareup-okhttp3-okhttp-urlconnection",
+]
 ui = [
     "com-hannesdorfmann-adapterdelegates4",
     "io-coil-kt-coil-compose",
