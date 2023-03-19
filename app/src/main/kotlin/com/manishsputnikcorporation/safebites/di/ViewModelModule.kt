@@ -1,8 +1,6 @@
 package com.manishsputnikcorporation.safebites.di
 
-import com.manishsputnikcorporation.safebites.data.ProductsRepositoryImpl
 import com.manishsputnikcorporation.safebites.domain.error.*
-import com.manishsputnikcorporation.safebites.domain.repository.ProductsRepository
 import com.manishsputnikcorporation.safebites.domain.usecase.base.dispatchers.DefaultDispatcherProvider
 import com.manishsputnikcorporation.safebites.domain.usecase.base.dispatchers.DispatcherProvider
 import dagger.Binds
