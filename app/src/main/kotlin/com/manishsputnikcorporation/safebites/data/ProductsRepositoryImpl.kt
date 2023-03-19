@@ -8,8 +8,8 @@ import com.manishsputnikcorporation.safebites.domain.repository.ProductsReposito
 import com.manishsputnikcorporation.safebites.network.response.asDomainModel
 import com.manishsputnikcorporation.safebites.network.utils.eitherFailure
 import com.manishsputnikcorporation.safebites.network.utils.eitherSuccess
-import com.manishsputnikcorporation.safebites.utils.mapFailure
-import com.manishsputnikcorporation.safebites.utils.mapSuccess
+import com.manishsputnikcorporation.safebites.utils.extensions.mapFailure
+import com.manishsputnikcorporation.safebites.utils.extensions.mapSuccess
 import javax.inject.Inject
 
 class ProductsRepositoryImpl

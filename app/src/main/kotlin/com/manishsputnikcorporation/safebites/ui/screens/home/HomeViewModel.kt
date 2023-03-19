@@ -2,14 +2,12 @@ package com.manishsputnikcorporation.safebites.ui.screens.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.manishsputnikcorporation.safebites.domain.common.DomainError
 import com.manishsputnikcorporation.safebites.domain.error.SafeFlowUseCaseDelegate
 import com.manishsputnikcorporation.safebites.domain.model.ProductModel
 import com.manishsputnikcorporation.safebites.domain.usecase.home.LoadProductsUseCase
-import com.manishsputnikcorporation.safebites.network.utils.Either
 import com.manishsputnikcorporation.safebites.ui.screens.home.HomeViewModel.HomeUiState.*
-import com.manishsputnikcorporation.safebites.utils.onFailure
-import com.manishsputnikcorporation.safebites.utils.onSuccess
+import com.manishsputnikcorporation.safebites.utils.extensions.onFailure
+import com.manishsputnikcorporation.safebites.utils.extensions.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.Channel
@@ -31,12 +29,13 @@ constructor(
 
   fun loadData() {
     loadProductsUseCase
-        .safePrepare<Unit, Either<List<ProductModel>, DomainError>>()
+        .safePrepare(Unit)
         .onStart { _productsHomeUiState.update { Loading } }
         .onEach {
           it.onSuccess { products -> _productsHomeUiState.update { Data(products) } }
-              .onFailure {
-                // TODO:
+              .onFailure { error ->
+                _productsHomeUiState.update { Data(emptyList()) }
+                _event.send(Event.Error(error.message))
               }
         }
         .launchIn(viewModelScope)

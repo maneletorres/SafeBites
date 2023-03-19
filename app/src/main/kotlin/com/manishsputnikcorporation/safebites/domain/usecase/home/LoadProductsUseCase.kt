@@ -10,8 +10,8 @@ import com.manishsputnikcorporation.safebites.domain.usecase.base.flow.FlowUseCa
 import com.manishsputnikcorporation.safebites.network.utils.Either
 import com.manishsputnikcorporation.safebites.network.utils.eitherFailure
 import com.manishsputnikcorporation.safebites.network.utils.eitherSuccess
-import com.manishsputnikcorporation.safebites.utils.onFailure
-import com.manishsputnikcorporation.safebites.utils.onSuccess
+import com.manishsputnikcorporation.safebites.utils.extensions.onFailure
+import com.manishsputnikcorporation.safebites.utils.extensions.onSuccess
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
