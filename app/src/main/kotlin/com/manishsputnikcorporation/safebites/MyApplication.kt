@@ -1,7 +1,6 @@
-package com.manishsputnikcorporation.safebites.ui
+package com.manishsputnikcorporation.safebites
 
 import android.app.Application
-import com.manishsputnikcorporation.safebites.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 

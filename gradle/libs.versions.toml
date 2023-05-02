@@ -1,21 +1,20 @@
 [versions]
-google-dagger-version = "2.45"
+google-dagger-version = "2.46"
 timber-version = "5.0.1"
 retrofit2-version = "2.9.0"
-okhttp3-version = "4.10.0"
-coil-kt-version = "2.2.2"
+okhttp3-version = "4.11.0"
+coil-kt-version = "2.3.0"
 adapter-delegates4-version = "4.3.2"
 navigation-ui-ktx-version = "2.5.3"
 hilt-version = "1.0.0"
-compose-material-version = "1.3.1"
-compose-ui-version = "1.3.3"
-
+compose-material-version = "1.4.2"
+compose-ui-version = "1.4.2"
 # Testing library versions:
 junit-version = "4.13.2"
 kotlinx-coroutines-test = "1.6.4"
-turbine-version = "0.12.1"
+turbine-version = "0.12.3"
 mockito-version = "4.1.0"
-io-mockk-version = "1.13.4"
+io-mockk-version = "1.13.5"
 
 [libraries]
 # Project dependencies:
@@ -96,8 +95,8 @@ unit-testing = [
 ]
 
 [plugins]
-com-android-application = "com.android.application:7.4.2"
-com-android-library = "com.android.library:7.4.2"
+com-android-application = "com.android.application:8.0.1"
+com-android-library = "com.android.library:8.0.1"
 # @pin this library to 1.7.20
 org-jetbrains-kotlin-android = "org.jetbrains.kotlin.android:1.7.20"
 com-github-ben-manes-versions = "com.github.ben-manes.versions:0.46.0"
