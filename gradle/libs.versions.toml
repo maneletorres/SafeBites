@@ -96,8 +96,8 @@ unit-testing = [
 ]
 
 [plugins]
-com-android-application = "com.android.application:7.4.2"
-com-android-library = "com.android.library:7.4.2"
+com-android-application = "com.android.application:8.0.1"
+com-android-library = "com.android.library:8.0.1"
 # @pin this library to 1.7.20
 org-jetbrains-kotlin-android = "org.jetbrains.kotlin.android:1.7.20"
 com-github-ben-manes-versions = "com.github.ben-manes.versions:0.46.0"
